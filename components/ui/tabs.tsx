@@ -2,28 +2,29 @@ import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cn } from "./utils";
 
-const Tabs = TabsPrimitive.Root;
+export const Tabs = TabsPrimitive.Root;
 
-const TabsList = React.forwardRef<
+export const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, ...props }, ref) => (
+>(({ className, children, ...rest }, ref) => (
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      // class hook "tabs-list" replaces old data-slot
-      "tabs-list inline-flex h-10 items-center justify-center rounded-full bg-secondary p-1 text-muted-foreground",
+      "inline-flex h-10 items-center justify-center rounded-full bg-secondary p-1 text-muted-foreground",
       className
     )}
-    {...props}
-  />
+    {...rest}
+  >
+    {children}
+  </TabsPrimitive.List>
 ));
-TabsList.displayName = TabsPrimitive.List.displayName;
+TabsList.displayName = "TabsList";
 
-const TabsTrigger = React.forwardRef<
+export const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
+>(({ className, children, ...rest }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
@@ -32,21 +33,23 @@ const TabsTrigger = React.forwardRef<
       "data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm",
       className
     )}
-    {...props}
-  />
+    {...rest}
+  >
+    {children}
+  </TabsPrimitive.Trigger>
 ));
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+TabsTrigger.displayName = "TabsTrigger";
 
-const TabsContent = React.forwardRef<
+export const TabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
+>(({ className, children, ...rest }, ref) => (
   <TabsPrimitive.Content
     ref={ref}
     className={cn("mt-3 focus-visible:outline-none", className)}
-    {...props}
-  />
+    {...rest}
+  >
+    {children}
+  </TabsPrimitive.Content>
 ));
-TabsContent.displayName = TabsPrimitive.Content.displayName;
-
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+TabsContent.displayName = "TabsContent";

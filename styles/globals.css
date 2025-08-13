@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 14px;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #e60000;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f6;
+  --secondary-foreground: #333333;
+  --muted: #f5f5f6;
+  --muted-foreground: #6c6c6c;
+  --accent: #fff3f3;
+  --accent-foreground: #e60000;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: transparent;
+  --input: transparent;
+  --input-background: #f9f9f9;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --ring: #e60000;
+  --chart-1: #e60000;
+  --chart-2: #ff4d4d;
+  --chart-3: #ff8080;
+  --chart-4: #ffb3b3;
+  --chart-5: #ffe6e6;
+  --radius: 0.5rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #333333;
+  --sidebar-primary: #e60000;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fff3f3;
+  --sidebar-accent-foreground: #e60000;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #e60000;
+}
+
+.dark {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --card: #2a2a2a;
+  --card-foreground: #ffffff;
+  --popover: #2a2a2a;
+  --popover-foreground: #ffffff;
+  --primary: #ff1a1a;
+  --primary-foreground: #ffffff;
+  --secondary: #333333;
+  --secondary-foreground: #ffffff;
+  --muted: #333333;
+  --muted-foreground: #a1a1a1;
+  --accent: #4d1a1a;
+  --accent-foreground: #ff1a1a;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: transparent;
+  --input: transparent;
+  --ring: #ff1a1a;
+  --chart-1: #ff1a1a;
+  --chart-2: #ff4d4d;
+  --chart-3: #ff8080;
+  --chart-4: #ffb3b3;
+  --chart-5: #ffe6e6;
+  --sidebar: #2a2a2a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ff1a1a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #4d1a1a;
+  --sidebar-accent-foreground: #ff1a1a;
+  --sidebar-border: #404040;
+  --sidebar-ring: #ff1a1a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-none ring-2 ring-[var(--ring)];
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family);
+  }
+
+  /* Vodafone brand accent elements */
+  .vodafone-gradient {
+    background: linear-gradient(135deg, #e60000 0%, #ff4d4d 100%);
+  }
+
+  .vodafone-shadow {
+    box-shadow: 0 4px 12px rgba(230, 0, 0, 0.15);
+  }
+}
+
+/**
+ * Base typography with Vodafone brand styling
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: 2rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.2;
+      color: var(--foreground);
+      letter-spacing: -0.025em;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.3;
+      color: var(--foreground);
+      letter-spacing: -0.015em;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.4;
+      color: var(--foreground);
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.5;
+      color: var(--foreground);
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+      color: var(--foreground);
+    }
+
+    label {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      color: var(--foreground);
+    }
+
+    button {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+
+/* Custom Vodafone brand classes */
+.vodafone-brand-text {
+  color: #e60000;
+  font-weight: 600;
+}
+
+.vodafone-header-bg {
+  background: linear-gradient(135deg, #ffffff 0%, #fff8f8 100%);
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* --- Borderless override requested --- */
+*, *::before, *::after { border-width: 0 !important; border-color: transparent !important; }
+.divide-x > :not([hidden]) ~ :not([hidden]),
+.divide-y > :not([hidden]) ~ :not([hidden]) { border-width: 0 !important; border-color: transparent !important; }
+
+
+/* === Spline/Figma Sites aesthetic === */
+:root {
+  --radius: 1rem; /* 16px rounded */
+  --background: #f7f7f8;
+  --foreground: #0e0e10;
+  --card: #ffffff;
+  --card-foreground: #0e0e10;
+  --popover: #ffffff;
+  --popover-foreground: #0e0e10;
+  --muted: #f2f2f4;
+  --muted-foreground: #666a70;
+  --secondary: #f3f3f5;
+  --secondary-foreground: #111214;
+  --accent: #f4f4f6;
+  --accent-foreground: #111214;
+  --input-background: #ffffff;
+  --input: transparent; /* borderless */
+  --border: transparent; /* borderless */
+  --ring: #111214; /* focus ring neutral */
+  --switch-background: #d7d9de;
+
+  --shadow-xs: 0 1px 1px rgba(0,0,0,.04);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06), 0 1px 1px rgba(0,0,0,.04);
+  --shadow-md: 0 6px 16px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.10);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,.6);
+
+  /* Softer chart palette */
+  --chart-1: #111214;
+  --chart-2: #6b7280;
+  --chart-3: #a3a8b2;
+  --chart-4: #d1d5db;
+  --chart-5: #e5e7eb;
+}
+
+.dark {
+  --background: #0b0c0f;
+  --foreground: #f7f7f8;
+  --card: #121318;
+  --card-foreground: #f7f7f8;
+  --popover: #121318;
+  --popover-foreground: #f7f7f8;
+  --muted: #15171c;
+  --muted-foreground: #a1a5ad;
+  --secondary: #14161b;
+  --secondary-foreground: #f7f7f8;
+  --accent: #151820;
+  --accent-foreground: #f7f7f8;
+  --input-background: #14161b;
+  --input: transparent;
+  --border: transparent;
+  --ring: #f7f7f8;
+  --switch-background: #2b2f38;
+
+  --shadow-xs: 0 1px 1px rgba(0,0,0,.4);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.45), 0 1px 1px rgba(0,0,0,.35);
+  --shadow-md: 0 6px 16px rgba(0,0,0,.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.55);
+}
+
+/* Card: soft elevation, no border */
+[data-slot="card"] {
+  box-shadow: var(--shadow-sm);
+  border: 0 !important;
+  background: var(--card);
+  border-radius: var(--radius);
+}
+
+/* Buttons: pill-ish, subtle depth */
+[data-slot="button"] {
+  border: 0 !important;
+  border-radius: 999px;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Inputs */
+input[type="text"], input[type="email"], input[type="number"], input[type="search"],
+textarea, select, [data-slot="input"] {
+  background: var(--input-background);
+  border: 0 !important;
+  border-radius: calc(var(--radius) - 4px);
+  box-shadow: 0 0 0 1px rgba(17,18,20,.06) inset;
+}
+input:focus, textarea:focus, select:focus, [data-slot="input"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring) inset;
+}
+
+/* Menus/Popovers */
+[data-slot="popover"], .popover, [role="menu"], [role="listbox"] {
+  background: var(--popover);
+  border: 0 !important;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius);
+}
+
+/* Tabs / Segmented controls */
+[data-slot="tabs-list"] {
+  background: var(--secondary);
+  border: 0 !important;
+  border-radius: 999px;
+  box-shadow: var(--shadow-xs);
+}
+[data-slot="tabs-trigger"][data-state="active"] {
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Tables: no gridlines */
+table, th, td { border: 0 !important; }
+table { box-shadow: var(--shadow-sm); border-radius: var(--radius); overflow: hidden; }
+
+/* Dividers: remove */
+hr { border: 0; height: 1px; background: transparent; }
+
+
+/* === Disable Tailwind composite box-shadow (ring + shadow) globally === */
+*, *::before, *::after {
+  /* Set Tailwind shadow vars to no-op so
+     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow) does nothing */
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-shadow: 0 0 #0000 !important;
+  --tw-shadow-colored: 0 0 #0000 !important;
+}
+
+/* Re-assert our intended shadows where needed */
+[data-slot="card"] { box-shadow: var(--shadow-sm) !important; }
+[data-slot="button"] { box-shadow: var(--shadow-xs) !important; }
+[data-slot="popover"], .popover, [role="menu"], [role="listbox"] { box-shadow: var(--shadow-md) !important; }
+table { box-shadow: var(--shadow-sm) !important; }
+
+/* Keep clear, minimal focus for inputs without Tailwind ring system */
+input:focus, textarea:focus, select:focus, [data-slot="input"]:focus {
+  box-shadow: 0 0 0 2px var(--ring) inset !important;
+}

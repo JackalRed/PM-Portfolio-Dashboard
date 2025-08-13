@@ -8,9 +8,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     <input
       ref={ref}
       type={type}
-      data-slot="input"
+      // class hook "app-input" replaces old data-slot
       className={cn(
-        "flex h-10 w-full rounded-lg bg-input-background px-3 py-2 text-sm outline-none",
+        "app-input flex h-10 w-full rounded-lg bg-input-background px-3 py-2 text-sm outline-none",
         "placeholder:text-muted-foreground",
         "focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
         "disabled:cursor-not-allowed disabled:opacity-50",

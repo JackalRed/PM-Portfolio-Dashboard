@@ -10,9 +10,9 @@ const TabsList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    data-slot="tabs-list"
     className={cn(
-      "inline-flex h-10 items-center justify-center rounded-full bg-secondary p-1 text-muted-foreground",
+      // class hook "tabs-list" replaces old data-slot
+      "tabs-list inline-flex h-10 items-center justify-center rounded-full bg-secondary p-1 text-muted-foreground",
       className
     )}
     {...props}

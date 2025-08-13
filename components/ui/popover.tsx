@@ -15,11 +15,11 @@ const PopoverContent = React.forwardRef<
 >(({ className, align = "center", sideOffset = 8, ...props }, ref) => (
   <PopoverPrimitive.Content
     ref={ref}
-    data-slot="popover"
     align={align}
     sideOffset={sideOffset}
     className={cn(
-      "z-50 rounded-xl bg-popover p-4 text-popover-foreground shadow-md outline-none",
+      // class hook "popover-content" replaces old data-slot
+      "popover-content z-50 rounded-xl bg-popover p-4 text-popover-foreground shadow-md outline-none",
       className
     )}
     {...props}
